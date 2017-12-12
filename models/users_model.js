@@ -1,6 +1,5 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
-
 var ContactSchema = new Schema({
     name: String,
     phone_number: {
@@ -14,10 +13,11 @@ var ContactSchema = new Schema({
         required: [true, 'A phone number is required']
     }
 });
-
 var UserSchema = new Schema({
     username: { type: String, unique: true },
     email: String,
-    hashed_password: String
+    hashed_password: String,
+    contacts: [ContactSchema]
 });
+mongoose.model('Contact', ContactSchema);
 mongoose.model('User', UserSchema);
