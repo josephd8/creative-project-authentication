@@ -5,14 +5,14 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-
 var expressSession = require('express-session');
 var mongoStore = require('connect-mongo')({session: expressSession});
 var mongoose = require('mongoose');
 require('./models/users_model.js');
 var conn = mongoose.connect('mongodb://localhost/cpAuthApp', { useMongoClient: true });
+
+var routes = require('./routes/index');
+var users = require('./routes/users');
 
 var app = express();
 
